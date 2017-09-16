@@ -52,11 +52,18 @@ output = re.split('\n',input_paragraph)
 counter = 0
 word_counter_para = ""
 paragraph_limit = 400
-for para in output:
+element_count = len(output)
+for index,para in enumerate(output):
     counter = counter + len(para.split())
     word_counter_para = word_counter_para+para
     if counter >=paragraph_limit:
-        finalList.append([word_counter_para,counter])
+        finalList.append(word_counter_para)
+        print ("counter ",counter)
+        counter = 0
+        word_counter_para=""
+    elif index == (element_count-1):
+        finalList.append(word_counter_para)
+        print("counter ", counter)
         counter = 0
         word_counter_para=""
 
